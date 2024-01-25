@@ -1,0 +1,25 @@
+{
+  "name": "example-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./p5js.json"
+      },
+      {
+        "language": [
+        "all"
+      ],
+      "path": "./js.json"
+      },
+      {
+        "language": [
+          "glsl"
+        ],
+        "path":"./glsl.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "hsb to rgb": {
+    "prefix": "hsbtorbg",
+    "body": ["vec3 hsb2rgb( in vec3 c ){", 
+      "\t    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),6.0)-3.0)-1.0,0.0,1.0);",
+    "\trgb = rgb*rgb*(3.0-2.0*rgb);",
+    "\treturn c.z * mix(vec3(1.0), rgb, c.y);",
+    "\t}"],
+    "description": "HSB stands for Hue, Saturation, and Brightness, By mapping the position on the x axis to the Hue and the position on the y axis to the Brightness, we obtain a nice spectrum of visible colors. This spatial distribution of color can be very handy; it's more intuitive to pick a color with HSB than with RGB."
+  },
+  "Cubic Impulse function": {
+    "prefix":"cubicPulse",
+    "body": [
+      "float cubicPulse(float c,float w,float x) {",
+        "\tx = abs(x-c);",
+        "\tif(x>w) return 0.0;",
+        "\tx /= w;",
+        "\treturn 1.0 - x*x*(3.0-2.0*x);\t",
+        "}"
+    ],
+    "description": "Chances are you found yourself doing smoothstep(c-w,c,x)-smoothstep(c,c+w,x) very often. I do, for example when I need to isolate some features in a signal. For those cases, this cubicPulse() below is my new friend and will be yours too soon. Bonus - you can also use it as a performant replacement for a gaussian."
+  },
+  "Impulse funcution": {
+    "prefix":"impulse",
+    "body": [
+      "float impulse(float k,float x) {",
+        "\tfloat h = k*x;",
+        "\treturn h*exp(1.0-h);\t",
+        "}"
+    ],
+    "description": "Impulses are great for triggering behaviours or making envelopes for music or animation. Baiscally, for anything that grows fast and then decays slowly. The following is an exponential impulse function. Use K to control the stretching of the function. Its maximum, which is 1, happens at exactly x = 1/k."
+  },
+  "Exponetnial Step": {
+    "prefix": "expStep",
+    "body": [
+      "float expStep(float x, float k, float n) {",
+        "\treturn exp(-k*pow(x,n));\t",
+        "}"
+    ],
+    "description":"A natural attenuation is an exponential of a linearly decaying quantity: yellow curve, exp(-x). A gaussian, is an exponential of a quadratically decaying quantity: light green curve, exp(-x^2). You can generalize and keep increasing powers, and get a sharper and sharper s-shaped curves. For really high values of n you can approximate a perfect step(). If you want such step to transition at x=a, like in the graphs to the right, you can set k = a^(-n)⋅ln 2."
+  },
+  "Parabola": {
+    "prefix": "parabola",
+    "body": [
+      "float parabola(float x,float k) {",
+        "\treturn pow(4.0*x*(1.0-x),k);\t",
+        "}"
+    ],
+    "description": "A nice choice to remap the 0..1 interval into 0..1, such that the corners are mapped to 0 and the center to 1. You can then rise the parabolar to a power k to control its shape."
+  },
+  "Power Curve": {
+    "prefix": "pcurve",
+    "body": [
+      "float pcurve(float x, float a, float b) {",
+        "\tfloat k = pow(a+b,a+b) / (pow(a,a)*pow(b,b));",
+        "\treturn k * pow(x,a) * pow(1.0-x,b);\t",
+        "}"
+    ],
+    "description":"This is a generalziation of the Parabola() above. It also maps the 0..1 interval into 0..1 by keeping the corners mapped to 0. But in this generalziation you can control the shape one either side of the curve, which comes handy when creating leaves, eyes, and many other interesting shapes."
+  },
+  "tile": {
+    "prefix": "tile",
+    "body": [
+      "vec2 tile(vec2 _st, float _zoom) {",
+        "\t_st *= _zoom;",
+        "\treturn fract(_st);\t",
+        "}"
+    ]
+  }
+}

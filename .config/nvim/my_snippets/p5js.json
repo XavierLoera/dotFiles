@@ -1,0 +1,69 @@
+{
+  "test": {
+    "prefix": "test",
+    "body": ["this is a test"],
+    "description": "test"
+  },
+  "noStroke": {
+    "prefix": "noStroke",
+    "body":["noStroke();","$0"],
+    "description": "Disables drawing the stroke (outline). If both noStroke() and noFill() are called, nothing will be drawn to the screen."
+  }, 
+  "noFill": {
+    "prefix": "noFill",
+    "body":["noFill();","$0"],
+    "description": "Disables setting the interior color of shapes. This is the same as making the fill completely transparent. If both noStroke() and noFill() are called, nothing will be drawn to the screen."
+  }, 
+  "erase": {
+    "prefix": "erase",
+    "body":["erase();","$0"],
+    "description": "All drawing that follows erase() will subtract from the canvas, revealing the web page underneath. The erased areas will become transparent, allowing the content behind the canvas to show through. The fill(), stroke(), and blendMode() have no effect once erase() is called."
+  }, 
+  "noErase": {
+    "prefix": "noErase",
+    "body":["noErase();","$0"],
+    "description": "Ends erasing that was started with erase(). The fill(), stroke(), and blendMode() settings will return to what they were prior to calling erase()."
+  },
+  "windowWidth": {
+    "prefix": "windowWidth",
+    "body":["windowWidth"],
+    "description":"System variable that stores the width of the inner window, it maps to window.innerWidth."
+  },
+  "windowHeight": {
+    "prefix": "windowHeight",
+    "body":["windowHeight"],
+    "description":"System variable that stores the height of the inner window, it maps to window.innerHeight."
+  },
+  "cursor": {
+    "prefix": "cursor",
+    "body":["cursor(${1:type});"],
+    "description":"Sets the cursor to a predefined symbol or an image, or makes it visible if already hidden. ARROW, CROSS, HAND, MOVE, TEXT and WAIT Native CSS properties: 'grab', 'progress', 'cell' etc. External: path for cursor's images (Allowed File extensions: .cur, .gif, .jpg, .jpeg, .png) "
+  },
+  "noCursor": {
+    "prefix": "noCursor",
+    "body":["noCursor();","$0"],
+    "description":"Hides the cursor from view."
+  },
+  "print": {
+    "prefix": "print",
+    "body":["print(${1:contents});$0"],
+    "description":"he print() function writes to the console area of your browser. This function is often helpful for looking at the data a program is producing. This function creates a new line of text for each call to the function."
+  },
+  "windowResized": {
+    "prefix": "windowResized",
+    "body":["function windowResized() {","\tresizeCanvas(windowWidth, windowHeight);","\t$0","}"],
+    "description":"The windowResized() function is called once every time the browser window is resized. This is a good place to resize the canvas or do any other adjustments to accommodate the new window size."
+  },
+  "hello": {
+    "prefix": ["test2", "whatwhat"],
+    "body":["${1|1,2,3,4,5|}"],
+    "context": "all",
+    "description":"hello"
+  },
+"easing ": {
+  "prefix": "easing",
+  "body":["${1|linear,easeInQuad,easeInCubic,easeInQuart,easeInQuint,easeInSine,easeInExpo,easeInCirc,easeInBack,easeInElastic,easeInBounce,easeOutQuad,easeOutCubic,easeOutQuart,easeOutQuint,easeOutSine,easeOutExpo,easeOutCirc,easeOutBack,easeOutElastic,easeOutBounce,easeInOutQuad,easeInOutCubic,easeInOutQuart,easeInOutQuint,easeInOutSine,easeInOutExpo,easeInOutCirc,easeInOutBack,easeInOutElastic,easeInOutBounce|}"],
+  "description":""
+}
+}
+
